@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
-import { Field, PublishedMessages } from '../components';
 import axios from 'axios';
 import useSWR from 'swr';
+import { Field, PublishedMessages } from '../components';
 const fetcher = url => axios.get(url).then(res => res.data);
 
 const SubscribeSchema = Yup.object().shape({
@@ -15,7 +15,22 @@ const SubscribeSchema = Yup.object().shape({
 
 export default function Publish() {
   const [message, setMessage] = useState('');
+  const [accessCode, setAccessCode] = useState('');
   const { data } = useSWR('/api/topics', fetcher);
+  useEffect(() => {
+    const code = prompt('Enter access code to proceed!', '');
+    setAccessCode(code);
+  }, []);
+
+  if (accessCode !== 'admin') {
+    return accessCode ? (
+      <p>
+        <mark>Error</mark> You can not view this page, Invalid access code.
+        <br />
+        Refresh page and try again
+      </p>
+    ) : null;
+  }
 
   return (
     <main>
