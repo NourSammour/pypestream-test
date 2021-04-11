@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import Index from '../pages/index';
-import Publish from '../pages/publish';
+import Subscribe from '../pages/subscribe';
 
 test('Homepage test', () => {
   const { getByText } = render(<Index />);
@@ -11,8 +11,8 @@ test('Homepage test', () => {
   expect(publishElement).toBeInTheDocument();
 });
 
-test('Publish test', () => {
-  const { getByText } = render(<Publish />);
-  const titleElement = getByText(/Add Subscriber/);
+test('Subscribe test', () => {
+  const { getByText } = render(<Subscribe />);
+  const titleElement = getByText(/Add new subscriber form/);
   expect(titleElement).toBeInTheDocument();
 });

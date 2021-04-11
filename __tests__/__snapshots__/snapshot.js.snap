@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders homepage unchanged 1`] = `
+<main>
+  <blockquote>
+    To subscribe to our newsletter 
+    <a
+      href="/subscribe"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Click here
+    </a>
+  </blockquote>
+  <blockquote>
+    To publish newsletter 
+    <a
+      href="/publish"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Click here
+    </a>
+  </blockquote>
+</main>
+`;
